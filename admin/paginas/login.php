@@ -14,7 +14,9 @@
 
         $dados = $consulta->fetch(PDO::FETCH_OBJ);
 
-        var_dump($dados);
+        if(isset($dados->id)){
+            mensagemErro("usuario não encontrado ou inativo");
+        }
     }
 ?>
 
