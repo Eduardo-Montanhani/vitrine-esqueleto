@@ -1,50 +1,42 @@
 <?php
-    if($_POST){
-        $login = $_POST["login"] ?? NULL;
-        $senha = $_POST["senha"] ?? NULL;
-        
-        //este é o SELECT mensionado no index.php, linha 2
-        $sql = "SELECT id, nome, login, senha FROM usuario where login = :login and ativo = 'S' limit 1";  
-        //este :login, usa-se o : antes pra tratar como um PARAMETRO
+if ($_POST) {
+    $login = $_POST["login"] ?? NULL;
+    $senha = $_POST["senha"] ?? NULL;
 
-        $consulta = $pdo->prepare($sql);
-        $consulta->bindParam(":login", $login);
-        //execute funcionará como se tivesse clicando em EXECUTAR no phpMyAdmin
-        $consulta->execute();
+    $sql = "SELECT id, nome, login, senha FROM usuario WHERE login = :login AND ativo = 'S' limit 1";
+    $consulta = $pdo->prepare($sql);
+    $consulta->bindParam(":login", $login);
+    $consulta->execute();
 
-        $dados = $consulta->fetch(PDO::FETCH_OBJ);
+    $dados = $consulta->fetch(PDO::FETCH_OBJ);
 
-        if(!isset($dados->id)) {
-            mensagemErro("usuario não encontrado ou inativo");
-        } else if ((!password_verify($senha, $dados->senha))){
-            mensagemErro("senha incorreta");
-        }
-
-        $_SESSION["usuario"] = array(
-            "id" => $dados->id,
-            "nome" => $dados->nome,
-            "login" => $dados->login
-        );
-        
-        echo "<script>location.href='paginas/home'</script>";
-        exit;
-        
-        
+    //login: bill
+    //senha: gates
+    if (!isset($dados->id)) {
+        mensagemErro("Usuario não encontrado");
+    } else if ((!password_verify($senha, $dados->senha))) {
+        mensagemErro("Senha Incorreta");
     }
+    $_SESSION["usuario"] = array(
+        "id" => $dados->id,
+        "nome" => $dados->nome,
+        "login" => $dados->login
+    );
+
+    echo "<script>location.href='paginas/home'</script>";
+    exit;
+}
 ?>
 
 <div class="login">
     <h1 class="text-center">Efetuar Login</h1>
     <form method="POST">
         <label for="login">Login:</label>
-        <input type="text" name="login" id="login" class="form-control" required placeholder="Por favor, preencha este campo">
-        
-        <br>
+        <input type="text" name="login" id="login" class="form-control" required placeholder="Por favor preencha esse campo"><br>
 
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" class="form-control" required placeholder="Por favor, preencha este campo">
-        <br>
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" class="form-control" required placeholder="Por favor preencha esse campo"><br>
 
-        <button type="submit" class="btn btn-success w-100">Efetuar Login</button>
+        <button type="submit" class="btn btn-dark w-100">Efetuar</button>
     </form>
 </div>
