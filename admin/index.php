@@ -1,4 +1,6 @@
 <?php
+// iniciar sessao 
+    session_start();
     //preciso pegar a variavel $pdo para conseguir rodar o SELECT no login.php
     require "../config.php"
 ?>

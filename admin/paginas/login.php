@@ -16,9 +16,18 @@
 
         if(!isset($dados->id)) {
             mensagemErro("usuario não encontrado ou inativo");
-        }else if (!password_verify($senha, $dados->senha)) {
+        } else if ((!password_verify($senha, $dados->senha))){
             mensagemErro("senha incorreta");
         }
+
+        $_SESSION["usuario"] = array(
+            "id" => $dados->id,
+            "nome" => $dados->nome,
+            "login" => $dados->login
+        );
+        
+        echo "<script>location.href='paginas/home'</script>";
+        exit;
         
         
     }
