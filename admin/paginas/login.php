@@ -14,9 +14,13 @@
 
         $dados = $consulta->fetch(PDO::FETCH_OBJ);
 
-        if(!isset($dados->id)){
+        if(!isset($dados->id)) {
             mensagemErro("usuario não encontrado ou inativo");
+        }else if (!password_verify($senha, $dados->senha)) {
+            mensagemErro("senha incorreta");
         }
+        
+        
     }
 ?>
 
