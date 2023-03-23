@@ -63,7 +63,7 @@
     <?php
         require "funcoes.php";
 
-        require "paginas/login.php";
+       // require "paginas/login.php";
 
         if(!isset($_SESSION["usuario"]))) {
             require "paginas/login.php";
