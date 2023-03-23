@@ -65,9 +65,31 @@
 
        // require "paginas/login.php";
 
-        if(!isset($_SESSION["usuario"]))) {
+        if(!isset($_SESSION["usuario"])) {
             require "paginas/login.php";
-        }
+        } else {
+            //pegar dados da url
+            require "header.php"
+            if (!isset($_GET["param"])) {
+
+                $page = explode("/", $_GET["param"]);
+                $pasta = $page[0] ?? NULL;
+                $pagina = $page[1] ?? NULL;
+                $id = $param[2] ?? NULL;
+                //remontando 
+                $page = "{$pasta}/{$pagina}";
+            }
+            if(file_exists("{$page}.php")){
+                require "{$page}.php";
+            }else {
+                require "paginas/erro.php";
+            }
+              require "footer.php";
+         }
+
+            
+
+        
     ?>
     
 </body>
