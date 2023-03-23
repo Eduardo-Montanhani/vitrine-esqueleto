@@ -69,7 +69,7 @@
             require "paginas/login.php";
         } else {
             //pegar dados da url
-            require "header.php"
+            
             if (!isset($_GET["param"])) {
 
                 $page = explode("/", $_GET["param"]);
@@ -79,6 +79,7 @@
                 //remontando 
                 $page = "{$pasta}/{$pagina}";
             }
+            require "header.php";
             if(file_exists("{$page}.php")){
                 require "{$page}.php";
             }else {
