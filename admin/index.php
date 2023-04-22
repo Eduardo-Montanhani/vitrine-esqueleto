@@ -70,7 +70,7 @@
         } else {
             //pegar dados da url
             
-            if (!isset($_GET["param"])) {
+            if (isset($_GET["param"])) {
 
                 $page = explode("/", $_GET["param"]);
                 $pasta = $page[0] ?? NULL;
@@ -85,11 +85,11 @@
             }else {
                 require "paginas/erro.php";
             }
-              require "footer.php";
+              
          }
 
             
-
+         require "footer.php";
         
     ?>
     
