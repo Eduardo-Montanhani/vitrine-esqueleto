@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitrine da Adidas</title>
-    <base href="localhost:8080/127.0.0.1/vitrine">
+    <base href="localhost:8888/vitrine">
     <link rel="shortcut icon" href="imagens/icone.png">
     <link rel="stylesheet" href="./estilo.css">
     <link rel="stylesheet" href="./css/all.min.css">
