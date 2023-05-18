@@ -46,6 +46,6 @@
             mensagemErro("Nao foi possivel salvar");
         }
         //aqui ele muda de local para o arquivo que esta dentro da pasta lista
-            echo "<script>location.href='lista/categorias'</script>";
+            echo "<script>location.href='listar/categorias'</script>";
             exit;
     }

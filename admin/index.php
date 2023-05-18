@@ -75,7 +75,7 @@
                 $page = explode("/", $_GET["param"]);
                 $pasta = $page[0] ?? NULL;
                 $pagina = $page[1] ?? NULL;
-                $id = $param[2] ?? NULL;
+                $id = $page[2] ?? NULL;
                 //remontando 
                 $page = "{$pasta}/{$pagina}";
             }
